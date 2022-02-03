@@ -9,4 +9,4 @@ deployments:
     staging:
       - "stage"
     production:
-      - "PRODUUUUUCTION"
+      - "*"
