@@ -1,0 +1,16 @@
+# Deploys to staging on each push to a feature branch
+
+name: Build
+
+on:
+  - push
+  - pull_request     
+
+jobs:
+  deploy-to-prod:
+    runs-on: ubuntu-18.04
+    name: Build
+    steps:
+      - name: Build
+        run: |
+          echo Building...

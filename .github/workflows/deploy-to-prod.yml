@@ -1,0 +1,31 @@
+# Deploys to prod on each push to the `main` branch.
+
+name: Deploy to prod
+
+on:
+  push:
+    branches:    
+      - main
+
+jobs:
+  deploy-to-prod:
+    runs-on: ubuntu-18.04
+    name: Deploy to Prod
+    steps:
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create deployment
+        id: deployment
+        with:
+          token: "${{ github.token }}"
+          target_url: http://my-cool-app.com
+          environment: PRODUUUUUCTION
+      - name: Running deployment
+        run: |
+          echo Deploying to production...
+      - uses: chrnorm/deployment-status@releases/v1
+        name: Update deployment
+        with:
+          token: "${{ github.token }}"
+          target_url: http://my-cool-app.com
+          state: "success"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
