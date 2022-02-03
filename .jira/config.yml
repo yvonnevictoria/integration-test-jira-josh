@@ -1,5 +1,5 @@
 deployments:
-  environment-mapping:
+  environmentMapping:
     development:
       - "dev"
       - "development-.*"
@@ -7,6 +7,6 @@ deployments:
       - "test"
       - ".*-test"
     staging:
-      - "stage-*"
+      - "stage"
     production:
       - "prod-*"
