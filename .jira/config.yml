@@ -1,5 +1,5 @@
 deployments:
-  environment-mapping:
+  environmentMapping:
     development:
       - "dev"
       - "development-.*"
