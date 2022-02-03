@@ -1,4 +1,4 @@
-deployments:
+deployment:
   environmentMapping:
     development:
       - "dev"
