@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy-to-prod:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     name: Deploy to Prod
     steps:
       - uses: chrnorm/deployment-action@releases/v1
