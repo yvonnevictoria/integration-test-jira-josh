@@ -7,10 +7,35 @@ on:
   - pull_request     
 
 jobs:
-  deploy-to-prod:
-    runs-on: ubuntu-22.04
-    name: Build
+  build:
+    runs-on: ubuntu-latest
+    name: Jira Example
     steps:
-      - name: Build
-        run: |
-          echo Building...
+    - name: Login
+      uses: atlassian/gajira-login@v3
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
+    - name: Jira TODO
+      uses: atlassian/gajira-todo@v3
+      with:
+        project: E2E
+        issuetype: Task
+        description: Created automatically via GitHub Actions
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create
+      id: create
+      uses: atlassian/gajira-create@v3
+      with:
+        project: E2E
+        issuetype: Task
+        summary: CI Failure for 
+        description: Please see full details at https://github.com{{ github.run_id }}
+        fields: '{"labels": ["ExampleLabel"]}'
+    
+    - name: Log created issue
+      run: echo "Issue ${{ steps.create.outputs.issue }} was created"
