@@ -21,7 +21,7 @@ jobs:
           environment: thisisnotavalidtestenv
       - name: Running deployment
         run: |
-          echo Deploying to production...
+          echo Deploying to TEST...
       - uses: chrnorm/deployment-status@releases/v1
         name: Update deployment
         with:
