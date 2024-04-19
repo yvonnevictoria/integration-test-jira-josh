@@ -5,7 +5,19 @@ deployments:
       - "development-.*"
     testing:
       - "test"
-      - ".*-test"
+      - ".*-tes2t"
+      - "t2est"
+      - ".*-t3est"
+      - "t4est"
+      - ".*-t5est"
+      - "te6st"
+      - ".*-tes7t"
+      - "te4st"
+      - ".*-tes6t"
+      - "t7est"
+      - ".*-t1est"
+      - "t0est"
+      - ".*-t9est"
     staging:
       - "stage-*"
     production:
