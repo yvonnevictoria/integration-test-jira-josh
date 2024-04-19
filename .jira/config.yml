@@ -30,6 +30,6 @@ deployments:
       - "stage8-*"
       - "stage9-*"
       - "stage10-*"
-      - "thisisnotavalidstagingenv-*"
+      - "thisisnotavalidstagingenv*"
     production:
       - "prod-*"

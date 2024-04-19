@@ -18,7 +18,7 @@ jobs:
         with:
           token: "${{ github.token }}"
           target_url: http://my-cool-app.com
-          environment: thisisnotavalidtestenv
+          environment: test
       - name: Running deployment
         run: |
           echo Deploying to TEST...
