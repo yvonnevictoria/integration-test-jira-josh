@@ -1,0 +1,31 @@
+# Deploys to staging on each push to a feature branch
+
+name: Deploy to test
+
+on:
+  push:
+    branches:    
+      - 'test/**'
+
+jobs:
+  deploy-to-prod:
+    runs-on: ubuntu-22.04
+    name: Deploy to Test
+    steps:
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create deployment
+        id: deployment
+        with:
+          token: "${{ github.token }}"
+          target_url: http://my-cool-app.com
+          environment: thisisnotavalidtestenv
+      - name: Running deployment
+        run: |
+          echo Deploying to production...
+      - uses: chrnorm/deployment-status@releases/v1
+        name: Update deployment
+        with:
+          token: "${{ github.token }}"
+          target_url: http://my-cool-app.com
+          state: "success"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
