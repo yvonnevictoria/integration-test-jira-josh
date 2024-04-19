@@ -21,7 +21,7 @@ jobs:
           environment: stage
       - name: Running deployment
         run: |
-          echo Deploying to production...
+          echo Deploying to staging...
       - uses: chrnorm/deployment-status@releases/v1
         name: Update deployment
         with:
